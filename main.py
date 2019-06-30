@@ -12,9 +12,6 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageMessage
 )
-import settings
-from vision import get_face_info
-
 import os
 from io import BytesIO
 import json
