@@ -31,12 +31,12 @@ url_similar = 'https://japanwest.api.cognitive.microsoft.com/face/v1.0/findsimil
 
 headers_detect = {
     'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': 'a528dfe604dd4d5084c1799226f34609'
+    'Ocp-Apim-Subscription-Key': '1030896439e74278b9fdeb6d28aa1489'
 }
 
 headers_similar = {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': 'a528dfe604dd4d5084c1799226f34609'
+    'Ocp-Apim-Subscription-Key': '1030896439e74278b9fdeb6d28aa1489'
 }
 
 params = {
@@ -56,8 +56,6 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    # app.logger.info("Request body:" + body)
-
     # handle webhook body
     try:
         handler.handle(body, signature)
