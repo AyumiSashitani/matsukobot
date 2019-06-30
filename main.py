@@ -1,3 +1,5 @@
+import os
+from io import BytesIO
 from flask import Flask, request, abort
 import requests
 
@@ -10,6 +12,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageMessage
 )
+import settings
+from vision import get_face_info
+
 import os
 from io import BytesIO
 import json
@@ -29,12 +34,12 @@ url_similar = 'https://japanwest.api.cognitive.microsoft.com/face/v1.0/findsimil
 
 headers_detect = {
     'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': ''
+    'Ocp-Apim-Subscription-Key': 'a528dfe604dd4d5084c1799226f34609'
 }
 
 headers_similar = {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': ''
+    'Ocp-Apim-Subscription-Key': 'a528dfe604dd4d5084c1799226f34609'
 }
 
 params = {
@@ -54,7 +59,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    # app.logger.info("Request body:" + body)
 
     # handle webhook body
     try:
